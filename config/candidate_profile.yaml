@@ -1,14 +1,34 @@
 # Candidate profile used by job_search/scorer.py for experience-match scoring.
 # Edit this file directly to update your background — never hard-code it in Python.
 # Nothing here is invented; only what you provide should go in this file.
+# Source: 2026 AF Resume 2.docx
+
+name: "Adriana Flores"
+location: "Cordova, TN (open to remote)"
+languages: ["English", "Spanish"]
 
 experience_years: 20
 
 experience_history:
-  - title: "Staff Accountant"
-  - title: "Senior Accountant"
+  - title: "Accountant"
+    company: "Alliance Healthcare"
+    location: "Memphis, TN"
+    start: "2022"
+    end: "Present"
   - title: "Accounting Clerk"
-  - title: "Remote Executive Assistant"
+    company: "Wesley Living"
+    location: "Memphis, TN"
+    start: "2020"
+    end: "2022"
+  - title: "Staff Accountant"
+    company: "KIPP Collegiate"
+    location: "Memphis, TN"
+    start: "2015"
+    end: "2019"
+
+education:
+  - degree: "Business Administration"
+    institution: "Robert Morris University"
 
 software:
   - QuickBooks Online
@@ -16,8 +36,10 @@ software:
   - Microsoft Dynamics GP
   - Great Plains
   - Excel
+  - Paylocity
 
 skills:
+  - Full-cycle bookkeeping
   - Bank reconciliations
   - Credit-card reconciliations
   - Accounts payable
@@ -25,11 +47,22 @@ skills:
   - Payroll processing
   - Journal entries
   - General ledger reconciliations
+  - GL adjustments
   - Financial statement preparation
+  - Grant and contract accounting
   - Grants invoicing
+  - Multi-entity accounting
   - Intercompany reconciliations
+  - Cleanup and catch-up projects
+  - 1099 preparation
+  - Vendor management
+  - Month-end close
   - Administrative support
   - Remote work experience
+
+certifications:
+  - "QuickBooks Online - Certified"
+  - "Xero - Certified"
 
 credentials:
   cpa: false   # do not invent - leave false unless you actually hold this
