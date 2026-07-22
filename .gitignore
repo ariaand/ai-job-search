@@ -62,6 +62,12 @@ documents/applications/**
 # Personal job search tracking
 job_search_tracker.csv
 
+# Accounting job search engine - personal data, never commit
+database/jobs.db
+.env
+exports/*
+!exports/.gitkeep
+
 # Upskill reports (personal output)
 upskill/*.md
 

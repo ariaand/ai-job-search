@@ -1,0 +1,63 @@
+# Core search + scoring configuration for the accounting job search system.
+# See config/job_titles.yaml (focus categories -> titles), config/skills.yaml
+# (preferred keywords), config/exclusions.yaml (reject/penalty/flag rules).
+
+search:
+  country: "USA"
+  country_indeed: "USA"
+  location: "United States"
+  is_remote: true
+  results_wanted_per_query: 50
+  # JobSpy `hours_old`: 14 days = 336 hours. Jobs posted within 7 days score higher (see scoring.recency_bonus_days).
+  hours_old: 336
+  recent_priority_days: 7
+  employment_types: ["fulltime", "parttime", "contract", "temporary", "internship"]
+  # JobSpy site_name values for Phase 1. Google requires `google_search_term`.
+  sites:
+    - indeed
+    - linkedin
+    - zip_recruiter
+    - glassdoor
+    - google
+  google_search_term_suffix: "jobs in the United States"
+  # Per-board timeout so one slow/failing board can't stall the whole run.
+  site_timeout_seconds: 60
+  max_retries_per_site: 2
+
+filters:
+  remote_only: true
+  allow_hybrid: false
+  allow_onsite: false
+  min_salary_usd: null   # set to require a salary floor; null = no floor
+  max_posting_age_days: 14
+
+scoring:
+  weights:
+    remote: 20
+    flexible_schedule: 10
+    title_match: 15
+    software_match: 10
+    accounting_experience_match: 15
+    excel_reconciliation_match: 10
+    preferred_employment_type: 5
+    salary_listed: 5
+    recency_bonus_days: 5     # awarded if posted within recent_priority_days
+    direct_employer_application: 5
+  deductions:
+    cpa_mandatory: 30
+    hybrid_only: 25
+    missing_salary: 3
+    stale_posting: 10          # older than max_posting_age_days
+    experience_gap: 15
+  rating_bands:
+    - {min: 90, max: 100, label: "Apply Immediately"}
+    - {min: 80, max: 89, label: "Strong Match"}
+    - {min: 70, max: 79, label: "Good Match"}
+    - {min: 60, max: 69, label: "Review Carefully"}
+    - {min: 0, max: 59, label: "Low Priority"}
+
+database:
+  # SQLite now; schema written to be Postgres-portable (see database/schema.py).
+  path: "database/jobs.db"
+
+candidate_profile_path: "config/candidate_profile.yaml"

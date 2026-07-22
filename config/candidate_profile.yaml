@@ -1,0 +1,41 @@
+# Candidate profile used by job_search/scorer.py for experience-match scoring.
+# Edit this file directly to update your background — never hard-code it in Python.
+# Nothing here is invented; only what you provide should go in this file.
+
+experience_years: 20
+
+experience_history:
+  - title: "Staff Accountant"
+  - title: "Senior Accountant"
+  - title: "Accounting Clerk"
+  - title: "Remote Executive Assistant"
+
+software:
+  - QuickBooks Online
+  - Xero
+  - Microsoft Dynamics GP
+  - Great Plains
+  - Excel
+
+skills:
+  - Bank reconciliations
+  - Credit-card reconciliations
+  - Accounts payable
+  - Accounts receivable
+  - Payroll processing
+  - Journal entries
+  - General ledger reconciliations
+  - Financial statement preparation
+  - Grants invoicing
+  - Intercompany reconciliations
+  - Administrative support
+  - Remote work experience
+
+credentials:
+  cpa: false   # do not invent - leave false unless you actually hold this
+
+preferred_work:
+  remote: true
+  flexible_schedule: true
+  employment_types_preferred: ["fulltime_w2", "parttime_w2", "contract"]
+  role_families: ["accounting", "bookkeeping", "virtual_executive_assistant"]

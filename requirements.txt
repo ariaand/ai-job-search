@@ -1,0 +1,9 @@
+# Python dependencies for the accounting job search system (job_search/,
+# database/, dashboard/, app.py). Unrelated to the Bun/TypeScript job-portal
+# CLIs in .agents/skills/ or the LaTeX CV/cover-letter pipeline.
+
+python-jobspy>=1.1.80
+pyyaml>=6.0
+pandas>=2.0
+streamlit>=1.38
+pytest>=8.0
