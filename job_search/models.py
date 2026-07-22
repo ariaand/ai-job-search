@@ -68,6 +68,18 @@ class Job:
         return d
 
     @staticmethod
+    def from_db_row(row: Any) -> "Job":
+        """Reconstructs a Job from a sqlite3.Row (database/db.py), splitting
+        the comma-joined list columns back into lists and coercing SQLite's
+        0/1 integer back to bool for cpa_required."""
+        data = dict(row)
+        data["required_skills"] = [s for s in (data.get("required_skills") or "").split(",") if s]
+        data["preferred_skills"] = [s for s in (data.get("preferred_skills") or "").split(",") if s]
+        data["red_flags"] = [s for s in (data.get("red_flags") or "").split(",") if s]
+        data["cpa_required"] = bool(data.get("cpa_required"))
+        return Job(**data)
+
+    @staticmethod
     def from_jobspy_row(row: dict[str, Any], source: str) -> "Job":
         """Build a Job from one row of JobSpy's `scrape_jobs()` DataFrame (as a dict)."""
 

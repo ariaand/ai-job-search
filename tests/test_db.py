@@ -90,3 +90,21 @@ def test_search_run_lifecycle(db: JobDatabase):
 
 def test_empty_database_list_jobs_returns_empty(db: JobDatabase):
     assert db.list_jobs() == []
+
+
+def test_from_db_row_reconstructs_lists_and_bool(db: JobDatabase):
+    job = make_job(
+        job_id="j1",
+        required_skills=["general ledger"],
+        preferred_skills=["QuickBooks Online", "Xero"],
+        red_flags=["CPA preferred"],
+        cpa_required=True,
+    )
+    db.upsert_job(job)
+    row = db.get_job("j1")
+
+    rebuilt = Job.from_db_row(row)
+    assert rebuilt.required_skills == ["general ledger"]
+    assert rebuilt.preferred_skills == ["QuickBooks Online", "Xero"]
+    assert rebuilt.red_flags == ["CPA preferred"]
+    assert rebuilt.cpa_required is True

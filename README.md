@@ -221,11 +221,23 @@ Search, filter, review scores/red-flags, and manage tracker status from a browse
 ### Files
 
 ```
-job_search/        # jobspy_client, query_builder, filters, deduplicator, scorer, models, search_service
+job_search/        # jobspy_client, query_builder, filters, deduplicator, scorer, models, search_service, apply_bridge
 database/           # schema.py, db.py (SQLite; Postgres-portable)
 dashboard/          # Streamlit app
 tests/              # pytest suite for query building, filters, scoring, dedup, db ops
 ```
+
+### Troubleshooting
+
+- **`ImportError: DLL load failed while importing _multiarray_umath`** - numpy/pandas versions older than what your Python build needs (seen on Python 3.14 with numpy 1.26). Run `pip install -U numpy pandas` (python-jobspy pins `numpy==1.26.3` in its own metadata, but newer numpy/pandas work fine in practice).
+- **CLI and dashboard show different job counts** - both must resolve `config/settings.yaml`'s `database.path` relative to the repo root, not the process's working directory. This is handled in `database/db.py`; if you see a mismatch after editing that file, check you didn't reintroduce a CWD-relative path.
+- **A board search returns 0 results** but no error - check `python app.py search --focus <x>` output for a "Board failures" section; a board can return empty legitimately (no matches) or silently rate-limit. Re-run later or drop that board from `config/settings.yaml`'s `search.sites`.
+
+### Limitations
+
+- **JobSpy's `is_remote` flag is not always accurate.** Some Indeed listings are flagged remote by JobSpy while the posting body says "Work Location: In person." The scorer trusts the flag for the `remote` weight; always read the actual description before applying.
+- **No CAPTCHA/anti-bot bypass.** If a board starts blocking JobSpy's requests, this system does not attempt to work around it - it logs the failure and moves on to the next board.
+- **AccountingFly, Robert Half, FlexJobs, etc. are not yet integrated.** Only the five JobSpy-supported boards (Indeed, LinkedIn, Glassdoor, ZipRecruiter, Google Jobs) are wired up. Adding a new board means writing a small adapter under `job_search/` following `jobspy_client.py`'s per-board isolation pattern, or - where scraping isn't permitted - a Google-site-search/RSS/manual-import path instead.
 
 ## Customization
 

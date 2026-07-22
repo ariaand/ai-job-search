@@ -16,12 +16,21 @@ from typing import Iterator, Optional
 from database.schema import ALL_STATEMENTS
 from job_search.models import Job
 
-DEFAULT_DB_PATH = Path(__file__).resolve().parent / "jobs.db"
+REPO_ROOT = Path(__file__).resolve().parent.parent
+DEFAULT_DB_PATH = REPO_ROOT / "database" / "jobs.db"
 
 
 class JobDatabase:
     def __init__(self, db_path: Optional[Path | str] = None) -> None:
-        self.db_path = Path(db_path) if db_path else DEFAULT_DB_PATH
+        if not db_path:
+            self.db_path = DEFAULT_DB_PATH
+        else:
+            path = Path(db_path)
+            # Relative paths (e.g. "database/jobs.db" from settings.yaml) must
+            # anchor to the repo root, not the caller's CWD - otherwise the
+            # CLI and the Streamlit dashboard (launched from different
+            # working directories) silently write to two different files.
+            self.db_path = path if path.is_absolute() else REPO_ROOT / path
         self.db_path.parent.mkdir(parents=True, exist_ok=True)
         self._init_schema()
 

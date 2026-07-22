@@ -39,13 +39,18 @@ def run_search(
     settings_path: Optional[Path] = None,
     db: Optional[JobDatabase] = None,
     dry_run: bool = False,
+    search_overrides: Optional[dict] = None,
 ) -> SearchRunResult:
     """Runs one search for `focus` (or "broad" for every category), scores
     and stores results. Board failures are collected, not raised - a bad
-    board never aborts the run."""
+    board never aborts the run.
+
+    `search_overrides` merges onto config/settings.yaml's `search` section
+    for this run only (e.g. {"sites": [...], "hours_old": 168}) - used by
+    the dashboard's search controls without mutating the config file."""
 
     settings = load_settings(settings_path)
-    search_cfg = settings["search"]
+    search_cfg = {**settings["search"], **(search_overrides or {})}
     job_titles = load_job_titles()
     skills_config = load_skills_config()
     exclusions = load_exclusions()
