@@ -105,12 +105,11 @@ Write 5-7 lines that function as an "elevator pitch": a concise, compelling intr
 
 **Create 2-3 profile statement templates for your main role types:**
 
-<!-- SETUP: These are populated based on your background -->
-**For [YOUR_PRIMARY_ROLE_TYPE] roles:**
-> [YOUR_PROFILE_STATEMENT_TEMPLATE_1]
+**For bookkeeping / staff accountant roles:**
+> Detail-driven Bookkeeper and Accounting Specialist with 20+ years of experience helping small businesses, healthcare organizations, and nonprofits maintain clean, accurate books. Expert in full-cycle bookkeeping, bank and credit-card reconciliations, month-end close, and AR/AP management across QuickBooks Online, Xero, and Microsoft Dynamics GP. QuickBooks Online and Xero certified, bilingual in English and Spanish. Seeking a remote role with a flexible schedule.
 
-**For [YOUR_SECONDARY_ROLE_TYPE] roles:**
-> [YOUR_PROFILE_STATEMENT_TEMPLATE_2]
+**For grant / nonprofit / multi-entity accounting roles:**
+> Accounting Specialist with 20+ years of experience supporting grant-funded, multi-entity, and mission-driven organizations. Skilled in grant and contract invoicing, intercompany reconciliations, and payroll allocation across funding sources, with hands-on experience in healthcare and education-sector accounting (Alliance Healthcare, KIPP Collegiate). QuickBooks Online and Xero certified, bilingual in English and Spanish.
 
 ### Core Competencies / Skills Section (Best Practice)
 Reorder and emphasize based on the role. Use bold category labels.

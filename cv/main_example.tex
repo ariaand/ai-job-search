@@ -1,8 +1,7 @@
-%% Example CV - [YOUR_NAME]
+%% Example CV - Adriana Flores
 %% Comprehensive overview of all competencies, experience, and achievements.
 %% Use as a master reference when tailoring role-specific CVs.
 %%
-%% SETUP: Run /setup to populate this with your actual information.
 %% Compile with: lualatex main_example.tex
 %% (pdflatex often fails on modern MiKTeX with fontawesome5 font-expansion errors.)
 
@@ -24,18 +23,18 @@
     linkcolor=blue,
     filecolor=magenta,
     urlcolor=blue,
-    pdftitle={[YOUR_NAME] - CV},
+    pdftitle={Adriana Flores - CV},
     pdfpagemode=FullScreen,
 }
 \usepackage[scale=0.80]{geometry}
 \usepackage{import}
+\usepackage{needspace}
 
 % personal data
-\name{[First]}{[Last]}
-\address{[Your Address, City, Country]}{}{}
-\phone[mobile]{[+XX XXXXXXXXXX]}
-\email{[your.email@example.com]}
-\extrainfo{\href{[https://linkedin.com/in/your-profile]}{LinkedIn}, \href{[https://github.com/your-username]}{GitHub}}
+\name{Adriana}{Flores}
+\address{Cordova, TN (Open to Remote)}{}{}
+\phone[mobile]{312-802-0811}
+\email{adriana@adrianaflores.com}
 
 \begin{document}
 
@@ -46,7 +45,7 @@
 % ============================================================
 
 \vspace{6pt}
-\small{[Write a 3-5 line profile statement tailored to the role you're applying for. Focus on what makes you uniquely qualified. Example: "Data scientist with a PhD in [field] and X years of industry experience. Combines deep domain expertise in [domain] with strong applied machine learning and Python development skills. Experienced in developing end-to-end ML pipelines, from data ingestion to stakeholder-facing dashboards."]}
+\small{Detail-driven Bookkeeper and Accounting Specialist with 20+ years of experience helping small businesses, healthcare organizations, and nonprofits maintain clean, accurate books. Expert in full-cycle bookkeeping, bank and credit-card reconciliations, month-end close, and AR/AP management across QuickBooks Online, Xero, and Microsoft Dynamics GP. QuickBooks Online and Xero certified, bilingual in English and Spanish, and experienced supporting multi-entity and grant-funded organizations. Seeking a remote bookkeeping or accounting role with a flexible schedule.}
 
 % ============================================================
 %     CORE COMPETENCIES
@@ -56,15 +55,15 @@
 \vspace{1pt}
 \begin{itemize}
 
-\item \textbf{[Skill Category 1]}: [Specific skills, frameworks, tools. Be concrete.]
+\item \textbf{Full-Cycle \& Monthly Bookkeeping}: Bank and credit-card reconciliations, journal entries, GL adjustments, month-end close
 
-\item \textbf{[Skill Category 2]}: [Specific skills, frameworks, tools.]
+\item \textbf{AR/AP \& Payroll}: Accounts payable/receivable, vendor management, 1099 preparation, payroll processing (Paylocity)
 
-\item \textbf{[Skill Category 3]}: [Specific skills, frameworks, tools.]
+\item \textbf{Grant \& Multi-Entity Accounting}: Grant and contract invoicing, multi-entity accounting, intercompany reconciliations, payroll allocation across funding sources
 
-\item \textbf{[Skill Category 4]}: [Domain expertise, methods, approaches.]
+\item \textbf{Financial Reporting}: Financial statement preparation, audit and internal reporting support, cleanup and catch-up projects
 
-\item \textbf{[Skill Category 5]}: [Tools, platforms, software.]
+\item \textbf{Software}: QuickBooks Online (Certified), Xero (Certified), Microsoft Dynamics GP / Great Plains, Microsoft Excel
 
 \end{itemize}
 
@@ -77,31 +76,37 @@
 \begin{itemize}
 
 % --- Most Recent Role ---
-\item{\cventry{[YYYY--Present]}{[Job Title]}{[Company]}{[City, Country]}{}{\vspace{1pt}
+\needspace{5\baselineskip}
+\item{\cventry{2022--Present}{Accountant}{Alliance Healthcare}{Memphis, TN}{}{\vspace{1pt}
 \begin{itemize}
-    \item [Achievement or responsibility 1 - be specific, use numbers where possible]
-    \item [Achievement or responsibility 2]
-    \item [Achievement or responsibility 3]
-    \item [Achievement or responsibility 4]
+    \item Performs full-cycle accounting in Microsoft Dynamics GP, including journal entries, reconciliations, and month-end close
+    \item Manages AP/AR processes, vendor payments, and aging reports
+    \item Allocates payroll expenses across multiple grants and funding sources
+    \item Prepares financial statements and supports audits and internal reporting
 \end{itemize}}}
 
 \vspace{3pt}
 
 % --- Previous Role ---
-\item{\cventry{[YYYY--YYYY]}{[Job Title]}{[Company]}{[City, Country]}{}{\vspace{1pt}
+\needspace{5\baselineskip}
+\item{\cventry{2020--2022}{Accounting Clerk}{Wesley Living}{Memphis, TN}{}{\vspace{1pt}
 \begin{itemize}
-    \item [Achievement or responsibility 1]
-    \item [Achievement or responsibility 2]
-    \item [Achievement or responsibility 3]
+    \item Processed vendor invoices and ensured 100\% on-time payments
+    \item Managed payroll for approximately 150 employees using Paylocity
+    \item Prepared 1099s and resolved GL discrepancies
+    \item Supported month-end close and financial reporting
 \end{itemize}}}
 
 \vspace{3pt}
 
 % --- Earlier Role ---
-\item{\cventry{[YYYY--YYYY]}{[Job Title]}{[Company]}{[City, Country]}{}{\vspace{1pt}
+\needspace{5\baselineskip}
+\item{\cventry{2015--2019}{Staff Accountant}{KIPP Collegiate}{Memphis, TN}{}{\vspace{1pt}
 \begin{itemize}
-    \item [Achievement or responsibility 1]
-    \item [Achievement or responsibility 2]
+    \item Performed full-cycle bookkeeping with reconciliations, transaction accuracy, and monthly reporting
+    \item Prepared and submitted grant and contract invoices and maintained A/R aging
+    \item Reconciled GL accounts and supported month-end close and financial statements
+    \item Allocated payroll expenses across multiple grants
 \end{itemize}}}
 
 \end{itemize}
@@ -114,15 +119,7 @@
 \vspace{1pt}
 \begin{itemize}
 
-\item{\cventry{[YYYY--YYYY]}{[Degree] in [Field]}{[Institution]}{[City, Country]}{}{\vspace{1pt}
-Thesis: ``[Thesis Title].'' [Brief description of research focus.]
-}}
-
-\vspace{3pt}
-
-\item{\cventry{[YYYY--YYYY]}{[Degree] in [Field]}{[Institution]}{[City, Country]}{}{\vspace{1pt}
-[Brief description or key topics.]
-}}
+\item{\cventry{}{Business Administration}{Robert Morris University}{}{}{}}
 
 \end{itemize}
 
@@ -133,27 +130,18 @@ Thesis: ``[Thesis Title].'' [Brief description of research focus.]
 \section{Languages}
 \vspace{1pt}
 \begin{itemize}
-\item [Language 1] (native), [Language 2] (fluent), [Language 3] (intermediate).
+\item English (native), Spanish (bilingual).
 \end{itemize}
 
 % ============================================================
-%     PUBLICATIONS (optional)
+%     CERTIFICATIONS
 % ============================================================
 
-\section{Publications}
+\section{Certifications}
 \vspace{1pt}
 \begin{itemize}
-\item [Author(s)] ([Year]). [Title]. [Journal/Conference]. \href{[DOI_URL]}{DOI link}
-\end{itemize}
-
-% ============================================================
-%     HONORS AND AWARDS (optional)
-% ============================================================
-
-\section{Honors and Awards}
-\vspace{1pt}
-\begin{itemize}
-\item{\textbf{[Award Name]} -- [Event/Organization] ([Year]).}
+\item QuickBooks Online -- Certified
+\item Xero -- Certified
 \end{itemize}
 
 % ============================================================
