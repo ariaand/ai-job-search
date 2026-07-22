@@ -15,6 +15,38 @@ from typing import Any, Optional
 
 logger = logging.getLogger(__name__)
 
+# JobSpy logs per-board failures (403s, rate limits, etc.) through its own
+# loggers (e.g. "JobSpy:ZipRecruiter") instead of raising - scrape_jobs()
+# returns an empty/partial DataFrame and swallows the error internally. A
+# bare try/except around scrape_jobs() therefore never sees these failures.
+# _CapturingHandler intercepts them via the root logger so a board that
+# silently returned nothing still gets recorded as a failed source.
+_JOBSPY_LOGGER_NAMES = {
+    "indeed": "JobSpy:Indeed",
+    "linkedin": "JobSpy:LinkedIn",
+    "zip_recruiter": "JobSpy:ZipRecruiter",
+    "glassdoor": "JobSpy:Glassdoor",
+    "google": "JobSpy:Google",
+}
+
+
+class _CapturingHandler(logging.Handler):
+    """Attached directly to JobSpy's own per-site logger (see module docstring
+    above _JOBSPY_LOGGER_NAMES) rather than the root logger: JobSpy's loggers
+    set `propagate = False` (they log via their own handler, which is why the
+    messages print even though nothing reaches the root logger's handlers),
+    so a handler only attached to root would silently miss every one of them."""
+
+    def __init__(self, level: int = logging.WARNING) -> None:
+        super().__init__(level=level)
+        self.records: list[tuple[str, str]] = []  # (logger_name, message)
+
+    def emit(self, record: logging.LogRecord) -> None:
+        self.records.append((record.name, record.getMessage()))
+
+    def messages(self) -> list[str]:
+        return [msg for _name, msg in self.records]
+
 
 @dataclass
 class BoardResult:
@@ -102,8 +134,27 @@ class JobSpyClient:
                 if site == "google":
                     kwargs["google_search_term"] = google_search_term or f"{search_term} jobs in the United States"
 
-                df = scrape_jobs(**kwargs)
+                capture = _CapturingHandler()
+                jobspy_logger = logging.getLogger(_JOBSPY_LOGGER_NAMES.get(site, f"JobSpy:{site}"))
+                jobspy_logger.addHandler(capture)
+                try:
+                    df = scrape_jobs(**kwargs)
+                finally:
+                    jobspy_logger.removeHandler(capture)
+
                 jobs = [] if df is None or df.empty else df.to_dict(orient="records")
+                board_errors = capture.messages()
+
+                if not jobs and board_errors:
+                    # scrape_jobs() didn't raise, but this board logged a
+                    # failure and delivered nothing - treat it as a failed
+                    # source (e.g. anti-bot 403/429) rather than a silent 0.
+                    last_error = "; ".join(dict.fromkeys(board_errors))  # de-dup, preserve order
+                    logger.warning("JobSpy site=%s attempt=%s reported errors: %s", site, attempt, last_error)
+                    if attempt < self.max_retries_per_site:
+                        time.sleep(min(2**attempt, 10))
+                    continue
+
                 return BoardResult(site=site, jobs=jobs, attempts=attempt)
 
             except Exception as exc:  # noqa: BLE001 - any board failure must not crash the run
