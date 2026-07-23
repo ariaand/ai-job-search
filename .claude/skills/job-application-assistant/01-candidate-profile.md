@@ -66,7 +66,7 @@ Memphis, TN
 - Multi-entity / intercompany accounting
 
 ### Software & Tools
-- QuickBooks Online (Certified)
+- QuickBooks Online (Certified, 10 years hands-on)
 - Xero (Certified)
 - Microsoft Dynamics GP / Great Plains
 - Microsoft Excel & Office

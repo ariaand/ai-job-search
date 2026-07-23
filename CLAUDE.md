@@ -47,7 +47,7 @@ This repo is a job application workspace. Claude acts as a career advisor and ap
 - **Primary:** Full-cycle bookkeeping, bank/credit-card reconciliations, journal entries, month-end close, AR/AP management
 - **Secondary:** 1099 preparation, payroll processing, grant and contract accounting, multi-entity accounting, cleanup/catch-up projects
 - **Domain:** Nonprofit and grant-funded organizations, multi-entity/intercompany accounting, healthcare and education sector accounting
-- **Software:** QuickBooks Online, Xero, Microsoft Dynamics GP (Great Plains), Excel, Paylocity
+- **Software:** QuickBooks Online (10 years hands-on), Xero, Microsoft Dynamics GP (Great Plains), Excel, Paylocity
 
 ### Certifications
 - **QuickBooks Online - Certified**
