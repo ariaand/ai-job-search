@@ -105,6 +105,19 @@ class JobDatabase:
         with self._connect() as conn:
             return conn.execute(query, params).fetchall()
 
+    def update_remote_classification(
+        self, job_id: str, remote_status: str, match_score: int, match_explanation: str, red_flags: list[str]
+    ) -> None:
+        """Corrects remote_status and its scoring consequences without touching
+        user-managed tracking fields (status, notes, dates) - used by the
+        remote-status backfill (see job_search/remote_verifier.py)."""
+        with self._connect() as conn:
+            conn.execute(
+                """UPDATE jobs SET remote_status = ?, match_score = ?, match_explanation = ?,
+                   red_flags = ? WHERE job_id = ?""",
+                (remote_status, match_score, match_explanation, ",".join(red_flags), job_id),
+            )
+
     def update_status(self, job_id: str, status: str, **date_fields: str) -> None:
         fields = {"status": status, **date_fields}
         set_clause = ", ".join(f"{k} = :{k}" for k in fields.keys())

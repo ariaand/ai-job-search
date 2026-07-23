@@ -7,16 +7,22 @@ from __future__ import annotations
 
 import logging
 from dataclasses import dataclass, field
+from datetime import date
 from pathlib import Path
 from typing import Optional
 
 from database.db import JobDatabase
 from job_search.deduplicator import deduplicate
-from job_search.filters import filter_jobs, load_exclusions, load_filter_settings
+from job_search.filters import filter_jobs, load_exclusions, load_filter_settings, passes_filters
 from job_search.jobspy_client import BoardResult, JobSpyClient
 from job_search.models import Job
 from job_search.query_builder import build_queries, load_job_titles
+from job_search.remote_verifier import verify_remote_status
 from job_search.scorer import load_candidate_profile, load_settings, load_skills_config, score_job
+
+# Tracker statuses that represent real user progress - a remote-status
+# correction must never silently revert these back to Rejected.
+_PRESERVED_STATUSES = {"Applied", "Follow-Up Due", "Interview", "Offer", "Rejected", "Archived"}
 
 logger = logging.getLogger(__name__)
 
@@ -139,3 +145,68 @@ def run_search(
         failed_sites=failed_sites,
         top_jobs=top_jobs,
     )
+
+
+@dataclass
+class ReverifyResult:
+    total_checked: int = 0
+    corrected: int = 0
+    newly_rejected: int = 0
+    corrections: list[tuple[str, str, str]] = field(default_factory=list)  # (title @ company, old, new)
+
+
+def reverify_remote_status(
+    db: Optional[JobDatabase] = None,
+    settings_path: Optional[Path] = None,
+) -> ReverifyResult:
+    """Re-checks every stored job's description against Indeed's own
+    "Work Location:" field and corrects remote_status when it disagrees with
+    JobSpy's is_remote flag (see job_search/remote_verifier.py for why this
+    is needed - found live, JobSpy misclassified 6 of 8 manually-checked
+    "remote" jobs as onsite/hybrid).
+
+    Never touches status/notes/dates for jobs already past New/Reviewing/
+    Interested/Ready to Apply (Applied, Interview, Offer, Rejected,
+    Archived) - a correction updates remote_status/score there but does not
+    silently reject a job the user already acted on."""
+
+    settings = load_settings(settings_path)
+    skills_config = load_skills_config()
+    exclusions = load_exclusions()
+    filter_settings = load_filter_settings()
+    candidate_profile = load_candidate_profile()
+    database = db or JobDatabase(settings.get("database", {}).get("path"))
+
+    result = ReverifyResult()
+    rows = database.list_jobs()
+    result.total_checked = len(rows)
+
+    for row in rows:
+        job = Job.from_db_row(row)
+        verification = verify_remote_status(job.description, job.remote_status)
+        if not verification.changed:
+            continue
+
+        old_status = job.remote_status
+        job.remote_status = verification.remote_status
+        score_job(
+            job,
+            settings=settings,
+            skills_config=skills_config,
+            exclusions=exclusions,
+            candidate_profile=candidate_profile,
+            target_titles=None,
+        )
+        database.update_remote_classification(
+            job.job_id, job.remote_status, job.match_score, job.match_explanation, job.red_flags
+        )
+        result.corrected += 1
+        result.corrections.append((f"{job.title} @ {job.company}", old_status, job.remote_status))
+
+        if row["status"] not in _PRESERVED_STATUSES:
+            filter_result = passes_filters(job, exclusions=exclusions, filter_settings=filter_settings)
+            if not filter_result.passed:
+                database.update_status(job.job_id, "Rejected", rejection_date=date.today().isoformat())
+                result.newly_rejected += 1
+
+    return result

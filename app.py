@@ -11,6 +11,7 @@ Usage:
     python app.py search --focus broad
     python app.py search --focus bookkeeping --dry-run
     python app.py list --status "Apply Immediately" --min-score 80
+    python app.py reverify
 """
 
 from __future__ import annotations
@@ -22,7 +23,7 @@ import sys
 from database.db import JobDatabase
 from job_search.query_builder import available_focuses
 from job_search.scorer import load_settings
-from job_search.search_service import run_search
+from job_search.search_service import reverify_remote_status, run_search
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
 logger = logging.getLogger("app")
@@ -63,6 +64,18 @@ def cmd_list(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_reverify(args: argparse.Namespace) -> int:
+    result = reverify_remote_status()
+    print(f"\nChecked {result.total_checked} stored jobs against Indeed's 'Work Location:' field")
+    print(f"  Corrected:      {result.corrected}")
+    print(f"  Newly rejected: {result.newly_rejected} (onsite/hybrid now excluded by filters)")
+    if result.corrections:
+        print("\n  Corrections:")
+        for title_company, old, new in result.corrections:
+            print(f"    {title_company}: {old} -> {new}")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Accounting job search CLI")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -81,6 +94,11 @@ def build_parser() -> argparse.ArgumentParser:
     list_parser.add_argument("--status", default=None, help="Filter by tracker status")
     list_parser.add_argument("--min-score", type=int, default=None, help="Minimum match score")
     list_parser.set_defaults(func=cmd_list)
+
+    reverify_parser = subparsers.add_parser(
+        "reverify", help="Re-check stored jobs' remote status against Indeed's own 'Work Location:' field"
+    )
+    reverify_parser.set_defaults(func=cmd_reverify)
 
     return parser
 

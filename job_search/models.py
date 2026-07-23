@@ -12,6 +12,8 @@ from dataclasses import dataclass, field, asdict
 from datetime import date, datetime
 from typing import Any, Optional
 
+from job_search.remote_verifier import verify_remote_status
+
 
 @dataclass
 class Job:
@@ -96,8 +98,14 @@ class Job:
         location = str(_clean(row.get("location")) or "").strip()
         job_url = str(_clean(row.get("job_url")) or "")
 
+        description = str(_clean(row.get("description")) or "")
+
         is_remote = _clean(row.get("is_remote"))
         remote_status = "remote" if is_remote else "unknown"
+        # JobSpy's is_remote flag is unreliable (seen misclassifying onsite/hybrid
+        # postings as remote in practice) - Indeed's own "Work Location:" field in
+        # the description is ground truth when present. See remote_verifier.py.
+        remote_status = verify_remote_status(description, remote_status).remote_status
 
         job_type_raw = str(_clean(row.get("job_type")) or "").lower()
         employment_type = "unknown"
@@ -128,5 +136,5 @@ class Job:
             date_posted=date_posted,
             job_url=job_url,
             direct_application_url=_clean(row.get("job_url_direct")) or None,
-            description=str(_clean(row.get("description")) or ""),
+            description=description,
         )
