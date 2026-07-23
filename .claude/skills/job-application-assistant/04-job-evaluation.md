@@ -16,9 +16,9 @@ How well do the required/preferred skills align with the candidate's capabilitie
 | 40-59 | Partial match, significant upskilling needed |
 | 0-39 | Fundamental mismatch |
 
-**Strong match areas:** [YOUR_PRIMARY_SKILLS]
-**Moderate match areas:** [YOUR_SECONDARY_SKILLS]
-**Weak match areas:** [SKILLS_YOU_LACK]
+**Strong match areas:** Full-cycle bookkeeping, bank/credit-card reconciliations, journal entries, month-end close, AR/AP, QuickBooks Online, Xero, Microsoft Dynamics GP/Great Plains, grant and contract accounting, multi-entity accounting, payroll (Paylocity), 1099 preparation
+**Moderate match areas:** General executive-assistant/administrative work, industries outside healthcare/nonprofit/education (transferable but less direct precedent)
+**Weak match areas:** Roles requiring an active CPA license (does not hold one), heavy public-accounting audit experience, tax-preparation-credential-only seasonal roles
 
 ### 2. Experience Match (0-100)
 Does work history align with what they're looking for?
@@ -30,9 +30,9 @@ Does work history align with what they're looking for?
 | 40-59 | Adjacent experience, would need to make the case |
 | 0-39 | Unrelated experience |
 
-**Strong:** [YOUR_DIRECT_EXPERIENCE_DOMAINS]
-**Moderate:** [YOUR_ADJACENT_EXPERIENCE]
-**Entry-level:** [ROLES_WITH_LIMITED_EXPERIENCE]
+**Strong:** Bookkeeper, Staff/Senior Accountant, Accounting Clerk/Specialist, Accounts Payable/Receivable Specialist, Client Accounting Services roles, grant/nonprofit accounting, healthcare-sector accounting
+**Moderate:** Accounting Manager / Assistant Controller (has not held a manager-title role yet, but does full-cycle work at that level), Virtual Executive Assistant (transferable admin skills, no direct EA title on resume)
+**Entry-level:** None - 20+ years of accounting/bookkeeping experience
 
 ### 3. Behavioral/Culture Fit (0-100)
 Does the role and company culture match the behavioral profile?
@@ -63,19 +63,19 @@ Does this role advance career goals and contain tasks that energize?
 | 0-39 | Dead end or backwards step |
 
 **Career goals:**
-- [YOUR_CAREER_GOAL_1]
-- [YOUR_CAREER_GOAL_2]
-- [YOUR_CAREER_GOAL_3]
+- Move into a fully remote bookkeeping/accounting role with a flexible schedule
+- Continue applying grant, multi-entity, and nonprofit accounting expertise
+<!-- GAP: longer-term direction (e.g. controller track vs. staying hands-on bookkeeping) not yet confirmed - ask if useful for scoring senior roles -->
 
 **Motivation filter:** Evaluate not just whether you *can* do the tasks, but whether the tasks will *energize* you. Consider:
-- Tasks that energize: [YOUR_ENERGIZING_TASKS]
-- Tasks that drain: [YOUR_DRAINING_TASKS]
+- Tasks that energize: Clean, accurate bookkeeping for mission-driven organizations (per resume summary); grant and contract accounting
+- Tasks that drain: <!-- GAP: not yet provided -->
 - Non-task factors: leadership style, department culture, company values, degree of autonomy
 
 **Life situation alignment:** Consider personal constraints:
-- **Security**: [YOUR_FINANCIAL_SITUATION_CONTEXT]
-- **Flexibility**: [YOUR_SCHEDULE_CONSTRAINTS]
-- **Professional development**: [YOUR_GROWTH_PRIORITIES]
+- **Security**: <!-- GAP: currently employed at Alliance Healthcare; salary baseline not yet provided -->
+- **Flexibility**: Remote-only, flexible schedule (hard requirement - see Deal-breakers in CLAUDE.md)
+- **Professional development**: <!-- GAP: not yet provided -->
 
 ### 6. Salary Benchmark (Optional)
 

@@ -1,0 +1,47 @@
+# Target job titles by focus category.
+# Used by job_search/query_builder.py to build JobSpy search terms and by
+# job_search/scorer.py to score title alignment. Keys are the --focus values
+# accepted by `python app.py search --focus <key>`.
+
+bookkeeping:
+  - Remote Bookkeeper
+  - Full-Charge Bookkeeper
+  - Senior Bookkeeper
+  - Reconciliation Specialist
+
+staff-accountant:
+  - Staff Accountant
+  - Senior Accountant
+  - General Ledger Accountant
+  - Accounting Specialist
+  - Accounting Coordinator
+  - Accounting Assistant
+
+accounts-payable:
+  - Accounts Payable Specialist
+  - Accounts Receivable Specialist
+  - Billing Specialist
+  - Payroll Specialist
+
+controller:
+  - Accounting Manager
+  - Assistant Controller
+  - Fractional Controller
+  - Finance Operations Specialist
+
+real-estate:
+  - Property Accountant
+  - Real Estate Accountant
+
+client-accounting:
+  - Client Accounting Services Accountant
+  - Outsourced Accountant
+  - E-commerce Accountant
+
+executive-assistant:
+  - Virtual Accounting Assistant
+  - Virtual Executive Assistant
+  - Executive Assistant with bookkeeping duties
+  - Operations Coordinator with accounting duties
+
+# "broad" runs every title across every category above.

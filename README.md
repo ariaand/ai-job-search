@@ -166,6 +166,80 @@ All claims in the CV and cover letter are verified against your actual profile. 
 - **Drafter-reviewer separation.** The drafter writes; a second Claude agent, spawned with a fresh context, researches the company and critiques the drafts. The drafter then revises. This catches missed keywords, weak framing, and generic language that a single pass often leaves in.
 - **Token-efficient reviewer dispatch.** The reviewer agent receives drafts inline rather than re-reading them, and the verification checklist runs once at the end of the workflow rather than being duplicated by both agents. Note: the new compile-and-inspect step in Step 5 spends some of those savings on PDF rendering and layout iteration — the workflow trades some end-to-end token cost for a real reduction in broken PDFs reaching the user.
 
+## Accounting job search engine (bulk search + scoring)
+
+Alongside the Claude-driven `/scrape` (WebSearch-based, built for the Danish market), this repo also includes a Python search engine purpose-built for **US remote/flexible accounting, bookkeeping, finance-ops, and virtual executive assistant roles**, using [JobSpy](https://github.com/speedyapply/JobSpy) to pull from Indeed, LinkedIn, Glassdoor, ZipRecruiter, and Google Jobs in bulk, then filters, deduplicates, and scores every result before it touches your tracker.
+
+This engine handles **search, filter, score, and store** at scale. It does **not** duplicate `/apply`'s CV/cover-letter/interview-prep work - once a job scores well, you hand its URL to `/apply` as usual and let the existing drafter-reviewer LaTeX workflow take it from there.
+
+### Setup
+
+```bash
+pip install -r requirements.txt
+```
+
+No API keys are required for JobSpy's default boards; see `.env.example` if you need proxy support.
+
+### Run a search
+
+```bash
+python app.py search --focus bookkeeping
+python app.py search --focus staff-accountant
+python app.py search --focus accounts-payable
+python app.py search --focus controller
+python app.py search --focus real-estate
+python app.py search --focus client-accounting
+python app.py search --focus executive-assistant
+python app.py search --focus broad          # every category
+python app.py search --focus bookkeeping --dry-run   # search + score, skip writing to the DB
+```
+
+Each run: builds search queries from `config/job_titles.yaml`, searches every board in `config/settings.yaml` (a failure on one board never stops the others), hard-rejects onsite/hybrid/sales/MLM/CPA-mandatory postings via `config/exclusions.yaml`, deduplicates cross-board listings, scores every survivor 0-100 (see `job_search/scorer.py`), and stores results in `database/jobs.db` (SQLite).
+
+```bash
+python app.py list --status "New" --min-score 80
+python app.py reverify   # re-check stored jobs' remote status against Indeed's own "Work Location:" field
+```
+
+### Dashboard
+
+```bash
+streamlit run dashboard/app.py
+```
+
+Search, filter, review scores/red-flags, and manage tracker status from a browser UI. See the job detail page for the full score breakdown and a **"Copy /apply command"** button that hands the job straight to Claude Code's existing `/apply` workflow instead of generating a second CV/cover letter.
+
+### Configuration
+
+| File | Purpose |
+|------|---------|
+| `config/settings.yaml` | Boards, search radius, scoring weights/deductions, rating bands, DB path |
+| `config/job_titles.yaml` | Target titles per focus category (`--focus` values) |
+| `config/skills.yaml` | Preferred software/process/admin keywords used in scoring |
+| `config/exclusions.yaml` | Hard-reject keywords, soft penalties, and CPA-preferred flags |
+| `config/candidate_profile.yaml` | Your background, used for experience-match scoring - edit directly, never fabricate |
+
+### Files
+
+```
+job_search/        # jobspy_client, query_builder, filters, deduplicator, scorer, models, search_service, apply_bridge
+database/           # schema.py, db.py (SQLite; Postgres-portable)
+dashboard/          # Streamlit app
+tests/              # pytest suite for query building, filters, scoring, dedup, db ops
+```
+
+### Troubleshooting
+
+- **`ImportError: DLL load failed while importing _multiarray_umath`** - numpy/pandas versions older than what your Python build needs (seen on Python 3.14 with numpy 1.26). Run `pip install -U numpy pandas` (python-jobspy pins `numpy==1.26.3` in its own metadata, but newer numpy/pandas work fine in practice).
+- **CLI and dashboard show different job counts** - both must resolve `config/settings.yaml`'s `database.path` relative to the repo root, not the process's working directory. This is handled in `database/db.py`; if you see a mismatch after editing that file, check you didn't reintroduce a CWD-relative path.
+- **A board search returns 0 results** but no error - check `python app.py search --focus <x>` output for a "Board failures" section; a board can return empty legitimately (no matches) or silently rate-limit. Re-run later or drop that board from `config/settings.yaml`'s `search.sites`.
+
+### Limitations
+
+- **JobSpy's `is_remote` flag is not always accurate.** `job_search/remote_verifier.py` corrects this automatically using Indeed's own `Work Location:` field in the description (ground truth, present at ingestion time), and runs on every new job at scrape time. Run `python app.py reverify` to re-check already-stored jobs after upgrading - a backfill against 514 stored jobs found 102 misclassified (97 of them actually onsite/hybrid). Non-Indeed sources without that field still rely on JobSpy's flag, so spot-check those.
+- **No CAPTCHA/anti-bot bypass.** If a board starts blocking JobSpy's requests, this system does not attempt to work around it - it logs the failure and moves on to the next board.
+- **AccountingFly, Robert Half, FlexJobs, etc. are not yet integrated.** Only the five JobSpy-supported boards (Indeed, LinkedIn, Glassdoor, ZipRecruiter, Google Jobs) are wired up. Adding a new board means writing a small adapter under `job_search/` following `jobspy_client.py`'s per-board isolation pattern, or - where scraping isn't permitted - a Google-site-search/RSS/manual-import path instead.
+
 ## Customization
 
 ### Which files to edit manually

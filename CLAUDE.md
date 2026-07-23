@@ -1,10 +1,7 @@
-# Job Application Assistant for [YOUR_NAME]
-
-<!-- SETUP: This file is populated by running /setup -->
-<!-- After running /setup, all [PLACEHOLDER] tokens will be replaced with your actual information -->
+# Job Application Assistant for Adriana Flores
 
 ## Role
-This repo is a job application workspace. Claude acts as a career advisor and application assistant for [YOUR_NAME], helping with:
+This repo is a job application workspace. Claude acts as a career advisor and application assistant for Adriana Flores, helping with:
 1. **Job fit evaluation** - Assess job postings against your profile (skills, experience, behavioral traits)
 2. **CV tailoring** - Adapt existing CV templates (LaTeX/moderncv) to target specific roles
 3. **Cover letter writing** - Draft targeted cover letters using existing templates (LaTeX)
@@ -13,68 +10,74 @@ This repo is a job application workspace. Claude acts as a career advisor and ap
 
 ## Candidate Profile
 
-<!-- This section is auto-populated by /setup. You can also fill it in manually. -->
+<!-- Populated from "2026 AF Resume 2.docx" via /setup Path B. Behavioral profile,
+     target-company examples, and salary baseline are still open - see gaps at
+     the bottom of this section. -->
 
 ### Identity
-- **Name:** [YOUR_NAME]
-- **Location:** [YOUR_CITY], [YOUR_COUNTRY] ([YOUR_COMMUTE_CONSTRAINTS])
-- **Languages:** [YOUR_LANGUAGES]
-- **Status:** [YOUR_EMPLOYMENT_STATUS]
-- **LinkedIn headline:** "[YOUR_LINKEDIN_HEADLINE]"
+- **Name:** Adriana Flores
+- **Location:** Cordova, TN (open to remote - no commute constraint, actively seeking remote-only roles)
+- **Languages:** English (native), Spanish (bilingual)
+- **Status:** Employed (Accountant, Alliance Healthcare) - open to new opportunities
+- **Phone:** 312-802-0811
+- **Email:** adriana@adrianaflores.com
+- **Tagline:** "Remote Bookkeeper & Accounting Specialist"
 
 ### Education
-<!-- List your degrees, most recent first -->
-- **[DEGREE_LEVEL] in [FIELD]** ([YEAR_START]-[YEAR_END]) - [INSTITUTION]
-  - Thesis: "[THESIS_TITLE]"
-  - Topics: [KEY_TOPICS]
+- **Business Administration** - Robert Morris University
 
 ### Professional Experience
-<!-- List your roles, most recent first -->
-- **[JOB_TITLE]** ([START_DATE] - [END_DATE]) - **[COMPANY]** ([LOCATION])
-  - [KEY_RESPONSIBILITY_1]
-  - [KEY_RESPONSIBILITY_2]
-  - [KEY_ACHIEVEMENT]
+- **Accountant** (2022 - Present) - **Alliance Healthcare** (Memphis, TN)
+  - Full-cycle accounting in Microsoft Dynamics GP: journal entries, reconciliations, month-end close
+  - Manages AP/AR processes, vendor payments, and aging reports
+  - Allocates payroll expenses across multiple grants and funding sources
+  - Prepares financial statements and supports audits and internal reporting
+- **Accounting Clerk** (2020 - 2022) - **Wesley Living** (Memphis, TN)
+  - Processed vendor invoices with 100% on-time payment record
+  - Managed payroll for ~150 employees using Paylocity
+  - Prepared 1099s and resolved GL discrepancies
+  - Supported month-end close and financial reporting
+- **Staff Accountant** (2015 - 2019) - **KIPP Collegiate** (Memphis, TN)
+  - Full-cycle bookkeeping with reconciliations, transaction accuracy, monthly reporting
+  - Prepared and submitted grant and contract invoices, maintained A/R aging
+  - Reconciled GL accounts, supported month-end close and financial statements
+  - Allocated payroll expenses across multiple grants
 
 ### Technical Skills
-- **Primary:** [YOUR_PRIMARY_SKILLS]
-- **Secondary:** [YOUR_SECONDARY_SKILLS]
-- **Domain:** [YOUR_DOMAIN_EXPERTISE]
-- **Software:** [YOUR_TOOLS_AND_SOFTWARE]
+- **Primary:** Full-cycle bookkeeping, bank/credit-card reconciliations, journal entries, month-end close, AR/AP management
+- **Secondary:** 1099 preparation, payroll processing, grant and contract accounting, multi-entity accounting, cleanup/catch-up projects
+- **Domain:** Nonprofit and grant-funded organizations, multi-entity/intercompany accounting, healthcare and education sector accounting
+- **Software:** QuickBooks Online (10 years hands-on), Xero, Microsoft Dynamics GP (Great Plains), Excel, Paylocity
 
 ### Certifications
-<!-- List relevant certifications with dates -->
-- **[CERTIFICATION_NAME]** - [HOURS]h - completed [DATE]
+- **QuickBooks Online - Certified**
+- **Xero - Certified**
 
 ### Publications
-<!-- List peer-reviewed publications, if any -->
-- [AUTHOR_LIST] ([YEAR]). [TITLE]. [JOURNAL].
+- None
 
 ### Awards
-<!-- List relevant awards, hackathons, competitions -->
-- [AWARD_NAME] - [EVENT] ([YEAR])
+- None listed
 
 ### Behavioral Profile
-<!-- Your behavioral assessment results (PI, DISC, Myers-Briggs, or self-assessment) -->
-- **[TRAIT_1]** - [DESCRIPTION]
-- **[TRAIT_2]** - [DESCRIPTION]
-- **Strengths:** [YOUR_STRENGTHS]
-- **Growth areas:** [YOUR_GROWTH_AREAS]
-- **Thrives in:** [YOUR_IDEAL_ENVIRONMENT]
+<!-- GAP: no formal assessment (PI/DISC/Myers-Briggs) or self-assessment provided yet -->
+- [Not yet provided - see 02-behavioral-profile.md]
 
 ### What Excites You
-<!-- What motivates you professionally -->
-- [PASSION_1]
-- [PASSION_2]
+- Helping small businesses and nonprofits maintain clean, accurate books (from resume summary)
+- Grant and contract accounting for mission-driven organizations
 
 ### Target Sectors
-<!-- Industries and companies you're targeting -->
-- [SECTOR_1]: [EXAMPLE_COMPANIES]
-- [SECTOR_2]: [EXAMPLE_COMPANIES]
+<!-- Based on demonstrated work history; specific target companies still open -->
+- Healthcare: (e.g. Alliance Healthcare-type organizations)
+- Nonprofit / grant-funded / education: (e.g. KIPP Collegiate-type organizations)
+- Small business / client accounting services / e-commerce accounting
 
 ### Deal-breakers
-<!-- Hard constraints on job search -->
-- [DEALBREAKER_1]
-- [DEALBREAKER_2]
+- Onsite-only roles
+- Hybrid-only roles (unless schedule is genuinely flexible)
+- Roles requiring an active CPA license as a mandatory (not preferred) qualification
+- Commission-only, insurance sales, or MLM-adjacent roles
 
 ## Repo Structure
 - `cv/` - LaTeX CV variants (moderncv template, banking style)

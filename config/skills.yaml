@@ -1,0 +1,41 @@
+# Preferred skills/keywords used for match scoring (job_search/scorer.py).
+# Grouped so the scorer can weight software vs. accounting-process vs. admin
+# keywords differently. Matching is case-insensitive substring/keyword search
+# against the job description + title.
+
+software:
+  - QuickBooks Online
+  - QBO
+  - QuickBooks
+  - Xero
+  - Microsoft Dynamics GP
+  - Great Plains
+  - Excel
+
+accounting_process:
+  - bank reconciliation
+  - credit-card reconciliation
+  - credit card reconciliation
+  - general ledger
+  - journal entries
+  - month-end close
+  - month end close
+  - financial statements
+  - accounts payable
+  - accounts receivable
+  - payroll
+  - billing
+  - cash flow
+  - budgeting
+  - forecasting
+  - intercompany accounting
+  - property accounting
+  - real estate accounting
+  - e-commerce accounting
+  - client accounting services
+
+administrative:
+  - administrative support
+  - calendar management
+  - email management
+  - remote operations

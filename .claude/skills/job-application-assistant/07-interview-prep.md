@@ -10,35 +10,42 @@ Keep answers to 1-2 minutes. Be specific. End with what you learned or would do 
 
 ## Ready-Made STAR Examples
 
-<!-- These are populated by /setup from your actual experience. Below are templates showing the format. -->
+### 1. Reconciliation Variance Investigation (Reconciliation Accuracy / Problem-Solving)
+**S:** In a small corporate accounting department, an account carried an unexplained variance forward for several months without full resolution during monthly bank reconciliations.
+**T:** Identify the source of the discrepancy, get the account reconciled accurately, and keep it from affecting the financial statements.
+**A:** Reviewed the general ledger, compared transactions to bank activity, and traced historical entries back several months. Found several transactions had been posted to the wrong account in a prior period. Prepared correcting journal entries, documented the adjustments, and added review steps to the reconciliation process to catch similar issues earlier.
+**R:** Account reconciled before month-end close, financial statements reflected accurate balances, and the revised process reduced the likelihood of similar discrepancies going forward.
+**Use for:** "Tell me about a time you found and fixed an error," "How do you approach reconciliation discrepancies?", "Describe a time you improved a process after finding a problem"
 
-### 1. [PROJECT_NAME] ([SKILL_DEMONSTRATED])
-**S:** [CONTEXT - what was happening, what was the problem]
-**T:** [YOUR RESPONSIBILITY - what you specifically needed to do]
-**A:** [WHAT YOU DID - specific actions, tools, methods]
-**R:** [OUTCOME - measurable results, adoption, impact]
-**Use for:** "[QUESTION_TYPE_1]", "[QUESTION_TYPE_2]"
+### 2. Month-End Close Standardization (Process Improvement)
+**S:** A four-person accounting team frequently worked overtime during month-end because several recurring tasks were manual and there was no standardized closing checklist.
+**T:** Improve efficiency in the close process while maintaining reporting accuracy.
+**A:** Built a detailed month-end close checklist, organized recurring journal entries into a standardized schedule, and built Excel templates that automated several reconciliation calculations. Documented task order so the team could work more consistently.
+**R:** Closing process became more organized, reduced duplicate work, let the department close more efficiently without sacrificing accuracy, and made it easier to train new team members.
+**Use for:** "Describe a process you improved," "Tell me about a time you increased efficiency," "How do you handle recurring deadline pressure?"
 
-### 2. [PROJECT_NAME] ([SKILL_DEMONSTRATED])
-**S:** [CONTEXT]
-**T:** [YOUR RESPONSIBILITY]
-**A:** [WHAT YOU DID]
-**R:** [OUTCOME]
-**Use for:** "[QUESTION_TYPE_1]", "[QUESTION_TYPE_2]"
+### 3. Vendor Payment Discrepancy Resolution (AP / Vendor Relations)
+**S:** A key vendor flagged several invoices as unpaid even though internal records showed the payments had been processed.
+**T:** Determine what happened, resolve it quickly, and keep the vendor relationship intact.
+**A:** Reviewed AP records, payment history, bank transactions, and supporting documentation. Found several payments had been misapplied by the vendor due to an account reference mismatch. Gathered payment confirmations, communicated directly with the vendor, and worked with them to correctly apply each payment.
+**R:** Vendor account brought current with no duplicate payments, no service interruption, and the documentation provided helped prevent similar issues on future payments.
+**Use for:** "Tell me about a difficult vendor or stakeholder situation," "Describe a time you resolved a payment discrepancy," "How do you handle conflicting records?"
 
-### 3. [PROJECT_NAME] ([SKILL_DEMONSTRATED])
-**S:** [CONTEXT]
-**T:** [YOUR RESPONSIBILITY]
-**A:** [WHAT YOU DID]
-**R:** [OUTCOME]
-**Use for:** "[QUESTION_TYPE_1]", "[QUESTION_TYPE_2]"
+### 4. Annual Audit Preparation (Audit Support / Organization Under Deadline)
+**S:** The company was preparing for its annual financial audit, and the accounting department needed to provide supporting documentation for numerous balance sheet accounts on a tight deadline.
+**T:** Organize documentation, respond to auditor requests, and make sure supporting schedules were complete and accurate for assigned accounts.
+**A:** Reconciled assigned accounts, verified supporting schedules, organized documentation electronically, and kept a tracker for auditor requests so nothing was missed. Coordinated with other departments when additional documentation was needed and responded promptly to follow-ups.
+**R:** Audit moved smoothly with minimal follow-up requests on assigned accounts; organized, readily-available documentation helped reduce delays and supported a successful audit.
+**Use for:** "Tell me about supporting an audit," "How do you stay organized under a tight deadline?", "Describe a time you had to coordinate across departments"
 
 <!-- Add more STAR examples as needed. Aim for 4-6 covering different competencies. -->
+<!-- GAP: 4 examples on file; a 5th-6th covering payroll-specific or cross-team collaboration would round this out. -->
+
 
 ## Common Tough Questions
 
-### "Why did you leave [previous company]?"
-> [PREPARE YOUR ANSWER - be honest, forward-looking, no negativity about former employer]
+### "Why are you looking to leave Alliance Healthcare?" (still currently employed there)
+> Not leaving due to a problem - actively employed and performing full-cycle accounting duties, but looking to move into a fully remote role with a flexible schedule. Frame as a positive move toward remote/flexible work rather than dissatisfaction with the current employer.
 
 ### "You don't have [specific skill/experience]."
 > [PREPARE YOUR ANSWER - acknowledge the gap, bridge to adjacent experience, show willingness to learn]

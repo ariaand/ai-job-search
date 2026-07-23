@@ -99,12 +99,14 @@ The font wrapper is mandatory — if you just move `\begin{itemize}` outside `\l
 \lettercontent{I look forward to hearing from you.}
 
 \begin{flushright}
-\closing{Kind regards,\\}
+\closing{Kind regards,}
 
 \signature{[YOUR_NAME]}
 \end{flushright}
 \end{document}
 ```
+
+**Do not add a trailing `\\` inside `\closing{}`'s argument** (e.g. `\closing{Kind regards,\\}`). `cover.cls` already appends its own `\\` internally - a manual one produces two consecutive `\\` with nothing between them, which fails to compile with `! LaTeX Error: There's no line here to end.`
 
 ## Key Commands Reference
 

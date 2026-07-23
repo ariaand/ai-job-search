@@ -1,0 +1,41 @@
+# Exclusion / penalty rules used by job_search/filters.py and job_search/scorer.py.
+#
+# `reject_keywords` -> filters.py drops the job outright (never scored, never stored).
+# `penalty_keywords` -> scorer.py subtracts `points` from the match score but keeps the job.
+# `flag_keywords` -> scorer.py adds a note to red_flags but does not penalize (e.g. CPA preferred).
+
+reject:
+  - keywords: ["commission only", "commission-only", "100% commission"]
+    reason: "Commission-only compensation"
+  - keywords: ["insurance sales", "insurance agent"]
+    reason: "Insurance sales role"
+  - keywords: ["financial advisor", "wealth advisor", "financial planner sales"]
+    reason: "Financial advisor sales role"
+  - keywords: ["door-to-door", "door to door", "canvassing"]
+    reason: "Door-to-door sales"
+  - keywords: ["unpaid internship", "unpaid intern"]
+    reason: "Unpaid internship"
+  - keywords: ["mlm", "multi-level marketing", "multi level marketing", "network marketing"]
+    reason: "MLM opportunity"
+  - keywords: ["cpa required", "must have active cpa", "active cpa license required"]
+    reason: "CPA license mandatory"
+  - keywords: ["public accounting audit experience required", "big 4 audit experience required"]
+    reason: "Extensive public accounting audit experience mandatory"
+
+# Onsite-only and hybrid-only (unless enabled) are rejected by filters.py directly
+# from JobSpy's `is_remote` / location fields, not by keyword — see filters.py.
+
+penalty:
+  - keywords: ["seasonal tax preparer", "tax season only", "seasonal only, tax"]
+    points: 25
+    reason: "Tax-preparer-only seasonal role"
+
+flag:
+  - keywords: ["cpa preferred", "cpa a plus", "cpa is a plus", "cpa preferred but not required"]
+    reason: "CPA preferred (not mandatory) - flagged for review"
+  - keywords: ["relocation required", "must relocate"]
+    reason: "May require relocation - verify before applying"
+
+# Hard geographic/relocation exclusions applied in filters.py:
+relocation_required: true   # reject if posting explicitly requires relocation
+non_us: true                 # reject if country_indeed / location resolves outside the US

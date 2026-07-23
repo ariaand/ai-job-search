@@ -1,50 +1,51 @@
 # Behavioral Profile
 
-<!-- SETUP: This file is populated by running /setup -->
-<!-- You can use results from PI, DISC, Myers-Briggs, StrengthsFinder, or a self-assessment -->
+<!-- Self-assessment (no formal PI/DISC/Myers-Briggs instrument on file) -
+     answers below are Adriana's own words, lightly structured. -->
 
 ## Overview
-[YOUR_NAME]'s behavioral assessment identifies them as a **[PROFILE_TYPE]** pattern. [1-2 SENTENCE_SUMMARY].
+No formal behavioral instrument on file. Based on self-assessment, Adriana works as an **independent, detail-verifying executor**: self-directed, accuracy-first, and most effective when given clear ownership and documented in writing rather than closely supervised.
 
 ## Core Behavioral Drives
 
 | Drive | Level | Meaning |
 |-------|-------|---------|
-| [DRIVE_1] | [LEVEL] | [DESCRIPTION] |
-| [DRIVE_2] | [LEVEL] | [DESCRIPTION] |
-| [DRIVE_3] | [LEVEL] | [DESCRIPTION] |
-| [DRIVE_4] | [LEVEL] | [DESCRIPTION] |
+| Autonomy | High (self-reported) | Thrives in a self-paced environment, independently managing priorities and delivering consistent quality without oversight |
+| Accuracy / Verification | High (self-reported) | Reviews information carefully and verifies before deciding - fits reconciliation and GL work directly |
+| Structure & Documentation | High (self-reported) | Communicates most effectively in writing; uses documentation to stay organized and precise |
+| Independent Execution | High (self-reported) | Prefers focused independent work, collaborating with the team when needed rather than by default |
 
 ## Strongest Behaviors
-- **[BEHAVIOR_1]:** [DESCRIPTION]
-- **[BEHAVIOR_2]:** [DESCRIPTION]
-- **[BEHAVIOR_3]:** [DESCRIPTION]
+- **Ownership without oversight:** self-paced, organizes and prioritizes independently, delivers consistent quality
+- **Careful, verified decision-making:** reviews information, checks accuracy, and considers outcomes before acting - not impulsive
+- **Written, documented communication:** organizes thoughts clearly in writing, keeps accurate records, stays direct and professional
 
 ## How You Work Best
-- [ENVIRONMENT_PREFERENCE_1]
-- [ENVIRONMENT_PREFERENCE_2]
-- [ENVIRONMENT_PREFERENCE_3]
+- Autonomous, self-paced environment with clear expectations and defined responsibilities
+- Trusted with ownership of your work rather than closely managed
+- Written communication channels (documented processes, email) over ad hoc verbal coordination
 
 ## Growth Areas (frame positively in applications)
-- **[AREA_1]:** [HOW_TO_FRAME_IT_POSITIVELY]
-- **[AREA_2]:** [HOW_TO_FRAME_IT_POSITIVELY]
+<!-- GAP: not yet provided - no self-identified growth areas given -->
 
 ## Mapping to Job Posting Language
 
 When a job posting mentions these keywords, it's a **strong behavioral fit**:
-- [KEYWORD_OR_PHRASE_THAT_MATCHES_YOUR_STYLE]
-- [ANOTHER_KEYWORD]
+- "autonomous," "self-directed," "independent contributor"
+- "detail-oriented," "high accuracy," "attention to detail"
+- "documented processes," "remote-first," "asynchronous"
 
 When a job posting mentions these, flag as **potential friction** (not deal-breaker):
-- [KEYWORD_OR_PHRASE_THAT_MIGHT_CLASH]
-- [ANOTHER_KEYWORD]
+- "fast-paced with heavy supervision" / frequent check-ins
+- "constant collaboration" or meeting-heavy culture as a core expectation
+- Communication described as primarily verbal/ad hoc rather than written
 
 ## Management Style Preferences
-- [WHAT_MANAGEMENT_STYLE_WORKS_FOR_YOU]
-- [WHAT_DOESN'T_WORK]
+- **Works well:** clear expectations, defined responsibilities, autonomy, trust, written instructions and documentation
+- **Doesn't work:** micromanagement, ambiguous accountability, being second-guessed on completed/verified work
 
 ## Using This in Applications
-- **Cover letters:** [HOW_TO_WEAVE_IN_BEHAVIORAL_STRENGTHS]
-- **CV:** [WHAT_TO_EMPHASIZE]
-- **Interviews:** [WHAT_STAR_EXAMPLES_TO_USE]
-- **Don't overstate:** [WHAT_NOT_TO_CLAIM]
+- **Cover letters:** emphasize reliability, independent ownership of full-cycle bookkeeping/accounting work, and a track record of accuracy (e.g. 100% on-time vendor payments)
+- **CV:** emphasize measurable accuracy and reliability outcomes over team/leadership framing
+- **Interviews:** lean on STAR examples that show independent problem-solving and catching/fixing discrepancies before they became bigger issues
+- **Don't overstate:** don't frame as a people-manager or highly collaborative/meeting-driven worker - the evidence points to independent, detail-first execution, not team leadership
