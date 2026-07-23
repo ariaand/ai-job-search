@@ -198,6 +198,7 @@ Each run: builds search queries from `config/job_titles.yaml`, searches every bo
 
 ```bash
 python app.py list --status "New" --min-score 80
+python app.py reverify   # re-check stored jobs' remote status against Indeed's own "Work Location:" field
 ```
 
 ### Dashboard
@@ -235,7 +236,7 @@ tests/              # pytest suite for query building, filters, scoring, dedup, 
 
 ### Limitations
 
-- **JobSpy's `is_remote` flag is not always accurate.** Some Indeed listings are flagged remote by JobSpy while the posting body says "Work Location: In person." The scorer trusts the flag for the `remote` weight; always read the actual description before applying.
+- **JobSpy's `is_remote` flag is not always accurate.** `job_search/remote_verifier.py` corrects this automatically using Indeed's own `Work Location:` field in the description (ground truth, present at ingestion time), and runs on every new job at scrape time. Run `python app.py reverify` to re-check already-stored jobs after upgrading - a backfill against 514 stored jobs found 102 misclassified (97 of them actually onsite/hybrid). Non-Indeed sources without that field still rely on JobSpy's flag, so spot-check those.
 - **No CAPTCHA/anti-bot bypass.** If a board starts blocking JobSpy's requests, this system does not attempt to work around it - it logs the failure and moves on to the next board.
 - **AccountingFly, Robert Half, FlexJobs, etc. are not yet integrated.** Only the five JobSpy-supported boards (Indeed, LinkedIn, Glassdoor, ZipRecruiter, Google Jobs) are wired up. Adding a new board means writing a small adapter under `job_search/` following `jobspy_client.py`'s per-board isolation pattern, or - where scraping isn't permitted - a Google-site-search/RSS/manual-import path instead.
 
