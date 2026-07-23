@@ -44,8 +44,8 @@ Keep answers to 1-2 minutes. Be specific. End with what you learned or would do 
 
 ## Common Tough Questions
 
-### "Why did you leave [previous company]?"
-> [PREPARE YOUR ANSWER - be honest, forward-looking, no negativity about former employer]
+### "Why are you looking to leave Alliance Healthcare?" (still currently employed there)
+> Not leaving due to a problem - actively employed and performing full-cycle accounting duties, but looking to move into a fully remote role with a flexible schedule. Frame as a positive move toward remote/flexible work rather than dissatisfaction with the current employer.
 
 ### "You don't have [specific skill/experience]."
 > [PREPARE YOUR ANSWER - acknowledge the gap, bridge to adjacent experience, show willingness to learn]
